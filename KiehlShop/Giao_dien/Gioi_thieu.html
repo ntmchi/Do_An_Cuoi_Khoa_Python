@@ -1,0 +1,84 @@
+{% extends 'Layouts/template.html' %}
+{% block header %}
+    <header class='header-v4'>
+    {% include 'Layouts/header_product.html' %}
+    </header>
+{% endblock %}	
+{% block content %}
+	<!-- Title page -->
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{url_for('static', filename = 'images/bg-01.jpg')}}');">
+		<h2 class="ltext-105 cl0 txt-center">
+			GIỚI THIỆU VỀ THƯƠNG HIỆU THỜI TRANG KIEHL
+		</h2>
+	</section>	
+
+
+	<!-- Content page -->
+	<section class="bg0 p-t-75 p-b-120">
+		<div class="container">
+			<div class="row p-b-148">
+				<div class="col-md-7 col-lg-8">
+					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							Thương hiệu thời trang KIEHL FASHION – trực thuộc công ty TNHH SX-TM
+Nét Việt chính thức ra mắt vào năm 2012.
+						</h3>
+
+						<p class="stext-113 cl6 p-b-26">
+							Với khơi nguồn từ lòng đam mê thời trang, khát khao mang đến cái đẹp cho tất cả các cô gái
+và hơn thế nữa là mong muốn được góp phần tạo dựng hình ảnh mới lạ cho ngành công nghiệp
+thời trang Việt Nam, Kiehl đã tập trung đầu tư vào chất lượng và kiểu dáng sản phẩm với
+phương châm “BE YOUR STYLE” – Hãy là phong cách của chính bạn, Kiehl mong muốn
+mang lại cho các cô gái những sản phẩm tốt nhất để các bạn có thể tự tin hơn trên con
+đường chọn lựa phong cách thời trang của riêng mình.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+					<div class="how-bor1 ">
+						<div class="hov-img0">
+							<img src="{{url_for('static', filename = 'images/about-01.jpg')}}" alt="IMG">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+					<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							CÁC SẢN PHẨM THỜI TRANG CỦA KIEHL
+						</h3>
+
+						<p class="stext-113 cl6 p-b-26">
+							Các mẫu thiết kế của MARC luôn mang đậm phong cách nhẹ nhàng và kết hợp hài hoà
+với các xu hướng mới của năm để tạo nên nét cá tính riêng cho từng sản phẩm.
+Đây cũng chính là phong cách chủ đạo mà MARC theo đuổi
+trong suốt hành trình sáng tạo thời trang của mình.
+						</p>
+
+						<div class="bor16 p-l-29 p-b-9 m-t-22">
+							<p class="stext-114 cl6 p-r-40 p-b-11">
+								Tại MARC, các mẫu thiết kế liên tục được kiểm duyệt kĩ càng ở từng khâu chọn chất liệu,
+dựng mẫu và hoàn thiện. Với đội ngũ thiết kế chuyên nghiệp, được đào tạo bài bản
+về chuyên môn và kinh nghiệm nhiều năm, MARC hy vọng sẽ làm
+hài lòng cả những khách hàng khó tính nhất.
+
+
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+					<div class="how-bor2">
+						<div class="hov-img0">
+							<img src="{{url_for('static', filename = 'images/about-02.jpg')}}" alt="IMG">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,140 @@
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Danh Mục
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/collections/all#ao" class="stext-107 cl7 hov-cl1 trans-04">
+								Áo
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/collections/all#dam" class="stext-107 cl7 hov-cl1 trans-04">
+								Đầm
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/collections/all#quan" class="stext-107 cl7 hov-cl1 trans-04">
+								Quần
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/collections/all#jumpsuit" class="stext-107 cl7 hov-cl1 trans-04">
+								Jumpsuit
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						KIEHL
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/Kiehl" class="stext-107 cl7 hov-cl1 trans-04">
+								Giới Thiệu
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/store" class="stext-107 cl7 hov-cl1 trans-04">
+								Cửa Hàng 
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Liên Hệ
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Thắc mắc? Vui lòng liên hệ văn phòng TTTH 137E Nguyễn Chí Thanh, Phường 9, Quận 5, Hồ Chí Minh.<br>
+						Điện thoại: (028)38.351.056
+					</p>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Kết Nối Với Kiehl
+					</h4>
+
+					<div class="p-t-3">
+						<a href="https://www.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="https://www.instagram.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+
+						<a href="https://www.pinterest.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="" class="m-all-1">
+						<img src="{{url_for('static', filename = 'images/icons/icon-pay-01.png')}}" alt="ICON-PAY">
+					</a>
+
+					<a href="" class="m-all-1">
+						<img src="{{url_for('static', filename = 'images/icons/icon-pay-02.png')}}" alt="ICON-PAY">
+					</a>
+
+					<a href="" class="m-all-1">
+						<img src="{{url_for('static', filename = 'images/icons/icon-pay-03.png')}}" alt="ICON-PAY">
+					</a>
+
+					<a href="" class="m-all-1">
+						<img src="{{url_for('static', filename = 'images/icons/icon-pay-04.png')}}" alt="ICON-PAY">
+					</a>
+
+					<a href="" class="m-all-1">
+						<img src="{{url_for('static', filename = 'images/icons/icon-pay-05.png')}}" alt="ICON-PAY">
+					</a>
+				</div>
+
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Image source: <a href="https://marc.com.vn" target="_blank"> #Marc</a>. Template <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+				</p>
+			</div>
+		</div>
+	</footer>
+
+    <!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	<script>
+		var Ds_Gio_hang = '';
+		{% if 'gio_hang' in session %}
+			Ds_Gio_hang = {{ session['gio_hang']| tojson}}
+		{% endif %}
+		if (Ds_Gio_hang != null) {
+			var So_luong_GH = Ds_Gio_hang.length
+			Th_Gio_hang.setAttribute('data-notify', Ds_Gio_hang.length)
+			Th_Gio_hang_M.setAttribute('data-notify', Ds_Gio_hang.length)
+		} 
+	
+	</script>
+    {% include 'Layouts/modal_login.html' %}

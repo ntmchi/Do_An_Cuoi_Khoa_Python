@@ -1,0 +1,17 @@
+{% extends 'Layouts/template.html' %}
+{% block header %}
+    <header class='header-v4'>
+    {% include 'Layouts/header_product.html' %}
+    </header>
+{% endblock %}
+
+ {% block content %}
+<div class="bg0 m-t-23 p-b-140">
+	<div class="container">
+       {% include 'Layouts/content.html' %}
+    </div>
+</div>
+{% endblock %}
+{% block modal %}
+    {{Modal_san_pham}}
+{% endblock %}

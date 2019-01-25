@@ -1,0 +1,105 @@
+{% extends 'Layouts/template.html' %}
+{% block header %}
+<header class='header-v4'>
+    {% include 'Layouts/header_product.html' %}
+</header>
+{% endblock %}
+
+{% block content %}
+
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{url_for('static', filename = 'images/bg-01.jpg')}}');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Hệ thống cửa hàng
+    </h2>
+</section>
+
+<div class="container-fluid">
+
+</div>
+
+<!-- Content page -->
+<section class="bg0 p-t-30 p-b-30">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div style="height:100%; width: 50%;">
+                <!-- Map -->
+                <div class="map">
+                    <div style="height:30rem;" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="{{url_for('static', filename = 'images/icons/pin.png')}}"
+                        data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+                </div>
+            </div>            
+            {{Chuoi_Cua_Hang}}            
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw3QZ5hhReTIJLSWz7o_582Wm3p6PV-EM&language=vi"></script>
+
+<script>
+    var map
+    var geocoder = new google.maps.Geocoder();
+
+    function Khoi_tao_Ban_do() {
+        var latlng = new google.maps.LatLng(10.823099, 106.629664); // Vĩ độ, Kinh độ Tp Hồ Chí Minh
+        var myOptions = {
+            zoom: 11,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            gestureHandling: 'nonenone'
+        };
+        map = new google.maps.Map(document.getElementById("google_map"), myOptions);
+    }
+
+    function Hien_thi_vi_tri_Cong_ty() {
+        {% for Cua_hang in Danh_sach_Cua_hang %}      
+        geocoder.geocode({
+            'address': '{{Cua_hang["Dia_chi"]}}'
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    title: `{{Cua_hang["Ten_cua_hang"]}} - {{Cua_hang["Dien_thoai"]}} `,
+                    cua_hang_id: 'CH_{{Cua_hang["Ma_cua_hang"]}}',
+                    animation: google.maps.Animation.DROP // BOUNCE || DROP
+                });
+
+                if (results[0].formatted_address) {
+                    region = results[0].formatted_address + '<br />';
+                }
+                var infowindow = new google.maps.InfoWindow({
+                    content: '<div style =width:500px; height:400px;><h5>Kielh {{Cua_hang["Ten_cua_hang"]}}</h5><br/>Địa chỉ: ' + region + '<br/>LatLng: ' + results[0].geometry.location + '</div>'
+                });
+                google.maps.event.addListener(marker, 'click', function () {                    
+                    infowindow.open(map, marker);        
+                    var cua_hang_id = marker.cua_hang_id;
+                    $('.thong-tin-cua-hang').hide();
+                    $('#' + cua_hang_id).show();
+                });
+
+                google.maps.event.addListener(marker, 'mouseover', function() {
+                infowindow.open(map, marker);
+                });
+
+                google.maps.event.addListener(marker, 'mouseout', function() {
+                infowindow.close(map, marker);
+                });
+
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        }
+        );
+        {% endfor %}
+        Khoi_tao_Ban_do()
+    }
+    window.onload = Hien_thi_vi_tri_Cong_ty;
+</script>
+
+{% endblock %}

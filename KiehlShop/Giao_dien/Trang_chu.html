@@ -1,0 +1,10 @@
+{% extends 'Layouts/template.html' %}
+{% block slide_banner %}
+    {% include 'Layouts/slide_banner.html' %}
+{% endblock %}
+ {% block content %}
+	{% include 'Layouts/content_home.html' %}
+{% endblock %}
+{% block modal %}
+    {{Modal_san_pham}}
+{% endblock %}

@@ -1,0 +1,33 @@
+<div class="wrap-modal1 js-modal1" id="modal-dang-nhap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="overlay-modal1 js-hide-modal1"></div>
+    <div class="modal-dialog" role="document">
+        <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+            <img src="{{url_for('static', filename = 'images/icons/icon-close.png')}}" alt="CLOSE">
+        </button>
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Đăng Nhập</h4>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
+                    <input type="email" id="email" name="email" class="form-control validate" placeholder="Nhập email..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Mật khẩu</label>
+                    <input type="password" id="password" name="password" class="form-control validate" placeholder="Nhập mật khẩu..." required>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-success btn-block btn-dang-nhap">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+        Modal Login Form</a>
+</div>

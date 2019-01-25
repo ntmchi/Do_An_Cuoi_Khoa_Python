@@ -1,0 +1,140 @@
+{% extends 'Layouts/template.html' %}
+{% block header %}
+<header class='header-v4'>
+	{% include 'Layouts/header_product.html' %}
+</header>
+{% endblock %}
+{% block content %}
+
+<!-- breadcrumb -->
+<div class="container">
+	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			Trang chủ
+			<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+		</a>
+
+		<span class="stext-109 cl4">
+			Giỏ hàng
+		</span>
+	</div>
+</div>
+
+
+<!-- Shoping Cart -->
+<div class="container" style="display: 1" id="Th_DS_Gio_hang">
+	<form class="bg0 p-t-25 p-b-85" method="post">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Sản phẩm</th>
+									<th class="column-2"></th>
+									<th class="column-3 text-center">Giá tiền</th>
+									<th class="column-4 text-center">Số lượng</th>
+									<th class="column-5 text-center">Tổng</th>
+								</tr>
+								{{Th_Chuoi_gio_hang}}
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+						<h4 class="mtext-109 cl2 p-b-30">
+							Thông tin giao hàng
+						</h4>
+
+						<div class="flex-w flex-t bor12 p-t-1 p-b-30">
+							<div class="p-r-18 p-r-0-sm w-full-ssm">
+								<p class="stext-111 cl6 p-t-2">
+									Bạn đã có tài khoản? <a href="#" id="dang-nhap" data-id="dang-nhap" data-target="#dang-nhap" data-toggle="wrap-modal1">Đăng nhập</a> <br>
+									Đơn hàng của bạn sẽ được xác nhận qua email và giao tới đúng địa chỉ trong thông tin giao hàng. Vui lòng điền
+									email, số điện thoại và địa chỉ giao hàng chi tiết để chúng tôi có thể giao hàng cho bạn nhanh chóng.
+								</p>
+
+								<div class="p-t-15">
+									<div class="bor8 bg0 m-b-12">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Th_Ho_ten" id="Th_Ho_ten" placeholder="Họ và tên"
+										 required>
+									</div>
+
+									<div class="bor8 bg0 m-b-22">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Th_Email" id="Th_Email" placeholder="Email"
+										 required>
+									</div>
+									<div class="bor8 bg0 m-b-22">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Th_So_dien_thoai" id="Th_So_dien_thoai"
+										 placeholder="Số điện thoại" required>
+									</div>
+									<div class="bor8 bg0 m-b-22">
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Th_Dia_chi" id="Th_Dia_chi" placeholder="Địa chỉ"
+										 required>
+									</div>
+									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+										<select class="js-select2" name="Th_Thanh_pho">
+											<option value="Hồ Chí Minh">Hồ Chí Minh</option>
+											<option value="Hà Nội">Hà Nội</option>
+										</select>
+										<div class="dropDownSelect2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex-w flex-t p-t-27 p-b-33">
+							<div class="size-208">
+								<span class="mtext-101 cl2">
+									Thành tiền:
+								</span>
+							</div>
+
+							<div class="size-209 p-t-1">
+								<span class="mtext-110 cl2">
+									{% set Thanh_tien = namespace(value=0) %}
+									{% for item in session['gio_hang'] %}
+									{% set Thanh_tien.value = Thanh_tien.value + (item.So_luong|int * item.Don_gia|int) %}
+									{% endfor %}
+									{{"{:,}".format(Thanh_tien.value)}}
+								</span>
+								<input type="hidden" value={{Thanh_tien.value}} name="Th_Thanh_tien">
+							</div>
+						</div>
+
+						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" id="Th_Thanh_toan">
+							Thanh Toán
+						</button>
+						<br> Nếu bạn chưa có tài khoản, khi hoàn tất đơn hàng, thông tin tài khoản sẽ được gởi qua mail cho bạn! </br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="Empty_Gio_hang" class="container text-center" style="display:none">
+	<div class="col-md-12 col-xs-12">
+		<h1 class="ltext-108">Giỏ hàng của bạn</h1>
+		<p class="count-cart stext-108">Có <span>0 sản phẩm</span> trong giỏ hàng</p><br>
+		<div class="d-flex justify-content-center">
+			<a href="/collections/all" class="flex-c-m stext-101 cl0 bg3 size-118 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+				Tiếp tục mua hàng
+			</a>
+		</div>
+	</div>
+	<br>
+</div>
+<script>
+
+	{% if (Th_Chuoi_gio_hang == "") %}
+		Empty_Gio_hang.style.display = ""
+		Th_DS_Gio_hang.style.display = "none"
+	{% endif %}
+
+</script>
+
+{% endblock %}

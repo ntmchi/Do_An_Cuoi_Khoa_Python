@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+	{% include 'Layouts/head.html' %}
+{% endblock %}
+
+<body class="animsition">
+	
+	<!-- Header -->
+	{% block header %}
+		<header>
+		{% include 'Layouts/header_home.html' %}
+		</header>
+	{% endblock %}
+	{% block sidebar %}
+		<header>
+		{% include 'Layouts/sidebar.html' %}
+		</header>
+	{% endblock %}
+
+	<!-- Cart -->
+	{% block cart %}
+		{% include 'Layouts/cart.html' %}
+	{% endblock %}
+
+	<!-- Slider -->
+	<!-- Banner -->
+	{% block slide_banner %}
+	{% endblock %}
+
+	<!-- Content -->
+	{% block content %}
+	{% endblock %}
+	<!-- Footer -->
+	{% block footer %}
+		{% include 'Layouts/footer.html' %}
+	{% endblock %}
+	<!-- Modal -->
+	{% block modal %}
+	{% endblock %}
+	<!-- Script -->
+	{% block script %}
+		{% include 'Layouts/script.html' %}
+	{% endblock %}
+
+</body>
+</html>

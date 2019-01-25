@@ -1,0 +1,66 @@
+{% extends 'Layouts/template.html' %}
+{% block head %}
+{{ super() }}
+<style type="text/css">
+  .important {
+    color: #336699;
+  }
+</style>
+<script src="//cdn.ckeditor.com/4.9.1/full/ckeditor.js"></script> {{ ckeditor.load() }} 
+{% endblock %}
+
+{% block header %}
+<header class='header-v4'>
+	{% include 'Layouts/header_product.html' %}
+</header>
+{% endblock %}
+{% block content %}
+			{{Chuoi_Thong_bao }}
+<form method="post">
+	<div style="background-color:whitesmoke">
+		<div>
+			<div class="container">
+				{{ form.csrf_token }}
+				<table class="table">
+					<thead>
+						<tr>
+							<th colspan="2" class="important"><h4 class="ltext-108 text-center">GỞI THẮC MẮC CHO CHÚNG TÔI</h4></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ form.Th_Ho_ten.label }} </td>
+							<td>{{ form.Th_Ho_ten }} </td>
+						</tr>
+						<tr>
+							<td>{{ form.Th_Email.label }} </td>
+							<td>{{ form.Th_Email }} </td>
+						</tr>
+						<tr>
+							<td>{{ form.Th_So_dien_thoai.label }} </td>
+							<td>{{ form.Th_So_dien_thoai }} </td>
+						</tr>
+						<tr>
+							<td>{{ form.Th_Noi_dung.label }} </td>
+							<td>{{ form.Th_Noi_dung }} </td>
+						</tr>
+						<tr>
+							<td colspan="2" class='text-center'>{{ form.Th_Submit }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		{% for field in form %} {% for message in field.errors %}
+		<div class="btn" style="color:red"> {{ message }}</div>
+		{% endfor %} {% endfor %}
+	</div>
+</form>
+{% endblock %}
+
+{% block script %}
+	{{ super() }}
+	<script>
+		Th_Submit.setAttribute('class', 'flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04')
+	</script>
+{% endblock %}
